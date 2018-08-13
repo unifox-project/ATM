@@ -1,0 +1,47 @@
+﻿<local:BasePage x:TypeArguments="local:SellChooseTheCurrencyViewModel" x:Class="CRYPTOMAT.SellChooseTheCurrencyPage"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:CRYPTOMAT"
+                mc:Ignorable="d" 
+                Style="{StaticResource PageStyle}"   
+                d:DesignHeight="1024" d:DesignWidth="1280"
+                d:DataContext="{d:DesignInstance local:SellChooseTheCurrencyViewModel, IsDesignTimeCreatable=True}">
+    <Canvas>
+        <!--Header block-->
+        <Grid>
+            <local:HeaderAreaControl DataContext="{Binding Header}" ></local:HeaderAreaControl>
+        </Grid>
+
+        <!-- Menu block -->
+        <Grid Canvas.Left="50" Canvas.Top="130" >
+            <local:StepMenuControl DataContext="{Binding MenuViewModel}"></local:StepMenuControl>
+        </Grid>
+
+        <!-- Main block -->
+        <Canvas  Height="610" Canvas.Left="450" Canvas.Top="200" Width="800">
+            <Button  Style="{StaticResource CryptoAppBtnSchoiceCurrencySmallStyle7}" Canvas.Left="420" Canvas.Top="0"   Content="UNIFOX" Command="{Binding Path=NextPageCommand, Mode=OneWay}"  CommandParameter="7"/>
+            <Button  Style="{StaticResource CryptoAppBtnSchoiceCurrencySmallStyle6}" Canvas.Left="0" Canvas.Top="0"   Content="UNICASH" Command="{Binding Path=NextPageCommand, Mode=OneWay}"   CommandParameter="6"/>
+            <Button  Style="{StaticResource CryptoAppBtnSchoiceCurrencySmallStyle8}" Canvas.Left="0"   Canvas.Top="160" Content="ELECTRA" Command="{Binding Path=NextPageCommand, Mode=OneWay}" CommandParameter="8"/>
+            <Button  Style="{StaticResource CryptoAppBtnSchoiceCurrencySmallStyle4}" Canvas.Left="420" Canvas.Top="160" Content="BITCOIN" Command="{Binding Path=NextPageCommand, Mode=OneWay}" CommandParameter="1"/>
+            <Button  Style="{StaticResource CryptoAppBtnSchoiceCurrencySmallStyle2}" Canvas.Left="0"   Canvas.Top="320" Content="ETHEREUM" Command="{Binding Path=NextPageCommand, Mode=OneWay}" CommandParameter="2"/>
+            <Button  Style="{StaticResource CryptoAppBtnSchoiceCurrencySmallStyle2}" Canvas.Left="420"   Canvas.Top="320" Content="DASH" Command="{Binding Path=NextPageCommand, Mode=OneWay}"   CommandParameter="3"/>
+
+            <Button  Style="{StaticResource CryptoAppBtnSchoiceCurrencySmallStyle3}"
+                     Visibility="Hidden"
+                     Canvas.Left="420" Canvas.Top="320" Content="SCUDO" Command="{Binding Path=NextPageCommand, Mode=OneWay}" CommandParameter="4"/>
+            <Button  Style="{StaticResource CryptoAppBtnSchoiceCurrencySmallStyle5}" 
+                     Visibility="Hidden"
+                     Canvas.Left="0"   Canvas.Top="480" Content="DIAMONDBOND" Command="{Binding Path=NextPageCommand, Mode=OneWay}" CommandParameter="5"/>
+        </Canvas>
+
+        <!--Footer buttons-->
+        <Canvas Canvas.Bottom="35" Width="1280" Height="110">
+            <Button Canvas.Left="29" Command="{Binding Path=PrevPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppBackBtnStyle1}" Content="BACK"/>
+            <Button Canvas.Left="500" Command="{Binding Path=MainPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppMainBtnStyle1}" Content="MAIN PAGE"/>
+            <Button Canvas.Left="972" Visibility="Hidden" IsEnabled="{Binding NextBtnEnabled}" Style="{StaticResource CryptoAppNextBtnStyle1}" Content="NEXT"/>
+        </Canvas>
+        <local:FooterControl Canvas.Bottom="0"></local:FooterControl>
+    </Canvas>
+</local:BasePage>

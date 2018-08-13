@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+	  <!--pRODUCT COMPONENTS-->
+	  <ComponentGroup Id="ProductComponents" >
+	    <!--Shortcut on main app-->
+	    <ComponentRef Id="MainAppShortCut"/>
+	  </ComponentGroup>
+
+	  <DirectoryRef Id="INSTALLFOLDER" FileSource="..\CRYPTOMAT\bin\$(var.Platform)\Debug\">
+	    <Component Id="MainAppShortCut" Guid="{2BF3816E-FE3A-4039-8CCE-5F7FA0BFD437}">
+	      <Shortcut Id="MainAppShortCut" Name="!(loc.ProductName_$(var.Platform))"
+	                Target="[INSTALLFOLDER]CRYPTOMAT.exe"
+	                Directory="InstallProgramMenuFolder"
+	                WorkingDirectory="INSTALLFOLDER"
+	                Icon="icon.ico"
+	      ></Shortcut>
+	      <!-- Our unique key for this component/shortcut -->
+	      <RegistryValue Id="RegShortcutKey" Root="HKCU" Key="SOFTWARE\$(loc.ProductNameFolder)" Name="Shortcut" Value="1" Type="integer" KeyPath="yes" />
+	      <!--Remove start menu items -->
+	      <RemoveFolder Id="RemoveStartMenu" Directory="InstallProgramMenuFolder" On="uninstall" />
+	    </Component>
+	    <!--You have to change shortcut gui-->
+	  </DirectoryRef>
+	</Fragment>
+
+</Wix>

@@ -1,0 +1,146 @@
+﻿<local:BasePage x:TypeArguments="local:BuyInsertCashViewModel" x:Class="CRYPTOMAT.BuyInsertCashPage"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:CRYPTOMAT"
+                mc:Ignorable="d" 
+                Style="{StaticResource PageStyle}"   
+                d:DesignHeight="1024" d:DesignWidth="1280"
+                d:DataContext="{d:DesignInstance local:BuyInsertCashViewModel, IsDesignTimeCreatable=True}"
+>
+    <Canvas>
+        <!--Header block-->
+        <Grid>
+            <local:HeaderAreaControl DataContext="{Binding Header}" ></local:HeaderAreaControl>
+        </Grid>
+        <!--Menu Block -->
+        <Grid Canvas.Left="50" Canvas.Top="130" >
+            <local:StepMenuControl DataContext="{Binding MenuViewModel}"></local:StepMenuControl>
+        </Grid>
+
+        <!-- Label Info Text Block -->
+        <Canvas >
+            <TextBlock Foreground="Red" FontWeight="Bold" FontSize="10.382" FontFamily="Roboto-Medium" 
+                       IsHyphenationEnabled="True" Canvas.Left="500" TextAlignment="Center" TextWrapping="Wrap" 
+                       Text="The terminal doesn't give change. Please, enter the exact amount." Canvas.Top="132">
+                <TextBlock.RenderTransform>
+                    <MatrixTransform Matrix="1.943,0,0,1.943,0,0"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock Foreground="Red" FontWeight="Bold" FontSize="10.382" FontFamily="Roboto-Medium" 
+                       IsHyphenationEnabled="True" Canvas.Left="700" TextAlignment="Center" TextWrapping="Wrap" 
+                       Text="Сoins not accepted." Canvas.Top="165">
+                <TextBlock.RenderTransform>
+                    <MatrixTransform Matrix="1.943,0,0,1.943,0,0"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Canvas>
+        <!-- Label Info Text Block -->
+
+        <!-- Main Block -->
+        <Canvas  Height="507" Canvas.Left="480" Canvas.Top="200" Width="682">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/Resources/Images/BG.png"></ImageBrush>
+            </Canvas.Background>
+
+            <TextBlock  Foreground="#FFFFFFFF" FontSize="34" FontFamily="Roboto-Medium" Height="91" 
+                        IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" 
+                        LineHeight="36" TextAlignment="Center" TextWrapping="Wrap" 
+                     
+                        Canvas.Left="31"  Canvas.Top="26.209" Width="618">
+             <Run Text="Please insert cash you want to exchange to"></Run>
+             <Run Text="{Binding Transaction.Buy.Currency.FullName, Source={x:Static local:TransactionViewModelLocator.Instance}, FallbackValue=Bitcoin}"></Run>
+            </TextBlock>
+
+            <TextBlock  Foreground="#FFFFFFFF" 
+                        FontSize="15.441" FontFamily="Roboto-Medium" IsHyphenationEnabled="True" 
+                        Canvas.Left="24.321" TextAlignment="Right" TextWrapping="Wrap" 
+                        Text="Inserted cash:" Canvas.Top="150.473">
+                <TextBlock.RenderTransform>
+                    <MatrixTransform Matrix="1.943,0,0,1.943,0,0"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock 
+                Foreground="#FFFFFFFF" FontSize="15.441" FontFamily="Roboto-Medium" IsHyphenationEnabled="True" 
+                Canvas.Left="25.55" TextAlignment="Right" TextWrapping="Wrap" Text="which equals:" Canvas.Top="234.473">
+                <TextBlock.RenderTransform>
+                    <MatrixTransform Matrix="1.943,0,0,1.943,0,0"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock  Foreground="#FFFFFFFF" FontSize="15.441" FontFamily="Roboto-Medium"
+                        IsHyphenationEnabled="True" Canvas.Left="26.78" TextAlignment="Right" 
+                        TextWrapping="Wrap" Text="You have to insert:" Canvas.Top="312.473">
+                <TextBlock.RenderTransform>
+                    <MatrixTransform Matrix="1.943,0,0,1.943,0,0"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock  Foreground="#FFFFFFFF" FontSize="15.441" FontFamily="Roboto-Medium" IsHyphenationEnabled="True" 
+                        Canvas.Left="26.295" TextAlignment="Right" TextWrapping="Wrap" Text="Destination address:" 
+                        Canvas.Top="384.473">
+                <TextBlock.RenderTransform>
+                    <MatrixTransform Matrix="1.943,0,0,1.943,0,0"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+            <Border  BorderThickness="1,1,1,1" CornerRadius="10,10,10,10" Width="246" Height="59"
+                     Background="White" Canvas.Left="400" Canvas.Top="148"
+                     >
+                <Grid>
+                    <TextBlock Margin="0 0 0 0" Text="{Binding InsertedEuro, ConverterCulture='en-US', StringFormat={}{0:F2} EUR}" 
+                               FontSize="32" FontFamily="{StaticResource RobotoMedium}" TextAlignment="Left"
+                               TextWrapping="Wrap"  Foreground="#FF2F75C1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    </TextBlock>
+                </Grid>
+            </Border>
+
+
+            <Border  BorderThickness="1,1,1,1" CornerRadius="10,10,10,10" Width="246" Height="59"
+                     Background="White" Canvas.Left="400" Canvas.Top="228"
+            >
+                <Grid>
+                    <TextBlock Margin="0 0 0 0" 
+                               FontSize="30" FontFamily="{StaticResource RobotoMedium}" TextAlignment="Left"
+                               TextWrapping="Wrap"  Foreground="#FF2F75C1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <Run Text="{Binding PlanningCountToBuyCurrency}"></Run>
+                        <Run Text="{Binding Currency.Name}"></Run>
+                        </TextBlock>
+                </Grid>
+            </Border>
+
+            <Border  BorderThickness="1,1,1,1" CornerRadius="10,10,10,10" Width="246" Height="59"
+                     Background="White" Canvas.Left="400" Canvas.Top="300"
+            >
+                <Grid>
+                    <TextBlock Margin="0 0 0 0" Text="{Binding HaveToInsertEuro,  ConverterCulture='en-US', StringFormat={}{0:F2} EUR}"
+                               FontSize="32" FontFamily="{StaticResource RobotoMedium}" TextAlignment="Left"
+                               TextWrapping="Wrap"  Foreground="#FF2F75C1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    </TextBlock>
+                </Grid>
+            </Border>
+
+            <Border  BorderThickness="1,1,1,1" CornerRadius="10,10,10,10" Width="458" Height="59"
+                     Background="White" Canvas.Left="188" Canvas.Top="430"
+            >
+
+                <Grid>
+                    <Viewbox>
+                        <TextBlock Margin="10 0 10 0" Text="{Binding OnlineWallet}" 
+                                   FontSize="32" FontFamily="Roboto-Medium" TextAlignment="Left"
+                                   TextWrapping="Wrap"  Foreground="#FF2F75C1" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" >
+                        </TextBlock>
+                    </Viewbox>
+                </Grid>
+            </Border>
+        </Canvas>
+
+        <!--Footer buttons-->
+        <Canvas Canvas.Bottom="35" Width="1280" Height="110">
+            <Button Canvas.Left="29" Command="{Binding Path=PrevPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppBackBtnStyle1}" Content="BACK" IsEnabled="{Binding UserCanGoBack}"/>
+            <Button Canvas.Left="500" Command="{Binding Path=MainPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppMainBtnStyle1}" Content="MAIN PAGE" IsEnabled="{Binding UserCanGoBack}"/>
+            <Button Canvas.Left="972" Command="{Binding Path=NextPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppOkBtnStyle}" Content="OK" IsEnabled="{Binding NextBtnEnabled}"/>
+        </Canvas>
+        <local:FooterControl Canvas.Bottom="0"></local:FooterControl>
+    </Canvas>
+</local:BasePage>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <!--All string put in this file-->
+
+
+  <String Id="Company">Arbitas</String>
+  <String Id="ProductNameFolder">Cryptomat</String>
+
+  <String Id="ProductName_x86">Cryptomat (32bit)</String>
+  <String Id="ProductName_x64">Cryptomat (64bit)</String>
+  <String Id="Language">1033</String>
+
+  <String Id="Description">Cryptomat application</String>
+  <String Id="Comments">Cryptomat application</String>
+  <String Id="Keywords">dot.net installer</String>
+
+  <String Id="ProductApplictionName">Cryptomat</String>
+
+  <String Id="DowngradeErrormessage"> A newer version of [ProductName] is already installed.</String>
+
+  <!--Template-->
+  <!--<String Id="YOURLOCID">Your localized string</String>-->
+</WixLocalization>

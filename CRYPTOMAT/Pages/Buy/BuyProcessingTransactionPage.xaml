@@ -1,0 +1,59 @@
+﻿<local:BasePage x:TypeArguments="local:BuyProcessingTransactionViewModel" x:Class="CRYPTOMAT.BuyProcessingTransactionPage"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:CRYPTOMAT"
+                mc:Ignorable="d" 
+                Style="{StaticResource PageStyle}"   
+                d:DesignHeight="1024" d:DesignWidth="1280"
+                d:DataContext="{x:Static local:BuyProcessingTransactionDesignViewModel.Instance}"
+>
+    <Canvas>
+        <!--Header block-->
+        <Grid>
+            <local:HeaderAreaControl DataContext="{Binding Header}" ></local:HeaderAreaControl>
+        </Grid>
+        <!--Menu Block -->
+        <Grid Canvas.Left="50" Canvas.Top="130" >
+            <local:StepMenuControl DataContext="{Binding MenuViewModel}"></local:StepMenuControl>
+        </Grid>
+        <!-- Main Block -->
+
+        <Canvas  Height="336" Canvas.Left="480" Canvas.Top="200" Width="682">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/Resources/Images/BG4 copy.png"></ImageBrush>
+            </Canvas.Background>
+            <TextBlock  Foreground="White" FontSize="20" 
+                        FontFamily="{StaticResource RobotoMedium}" 
+                        Height="42" IsHyphenationEnabled="True" 
+                        LineStackingStrategy="BlockLineHeight" 
+                        Canvas.Left="64" LineHeight="20" TextAlignment="Right" 
+                        TextWrapping="Wrap" Text="Transaction ID:" Canvas.Top="200" 
+                        Width="267"/>
+            <TextBlock  Foreground="White" FontSize="20" 
+                        FontFamily="{StaticResource RobotoMedium}" 
+                        Height="42" IsHyphenationEnabled="True" 
+                        LineStackingStrategy="BlockLineHeight" 
+                        Canvas.Left="64" LineHeight="20" 
+                        TextAlignment="Right" 
+                        TextWrapping="Wrap" Text="for:" Canvas.Top="140" Width="267"/>
+            <TextBlock  Foreground="White" FontSize="20" FontFamily="{StaticResource RobotoMedium}" Height="42" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="64" LineHeight="20" TextAlignment="Right" TextWrapping="Wrap" Text="You have just purchased:" Canvas.Top="103" Width="267"/>
+            <TextBlock  Foreground="White" FontSize="20" FontFamily="{StaticResource RobotoMedium}" Height="42" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="362" LineHeight="20" TextAlignment="Left" TextWrapping="Wrap" Text="{Binding TransactionString}" Canvas.Top="200" Width="267"/>
+            <TextBlock  Foreground="White" FontSize="20" FontFamily="{StaticResource RobotoMedium}" Height="42" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="362" LineHeight="20" TextAlignment="Left" TextWrapping="Wrap" Text="{Binding InsertedEuro, ConverterCulture='en-US', StringFormat={}{0:F2} EUR}" Canvas.Top="140" Width="267"/>
+            <TextBlock  Foreground="White" FontSize="20" FontFamily="{StaticResource RobotoMedium}" Height="42" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="362" LineHeight="20" TextAlignment="Left" 
+                        TextWrapping="Wrap"  Canvas.Top="103" Width="267">
+                <Run Text="{Binding PlanningCountToBuyCurrency}"></Run>
+                <Run Text="{Binding Currency.Name}"></Run>
+                </TextBlock>
+            <TextBlock  Foreground="White" FontSize="32" FontFamily="{StaticResource RobotoMedium}" Height="30" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="50" LineHeight="32" TextAlignment="Center" TextWrapping="Wrap" Text="Congratulations!" Canvas.Top="50" Width="618"/>
+        </Canvas>
+        <!--Footer buttons-->
+        <Canvas Canvas.Bottom="35" Width="1280" Height="110">
+            <Button Canvas.Left="29" Visibility="Hidden" Command="{Binding Path=PrevPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppBackBtnStyle1}" Content="BACK"/>
+            <Button Canvas.Left="500" Command="{Binding Path=MainPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppMainBtnStyle1}" Content="MAIN PAGE"/>
+            <Button Canvas.Left="972" Command="{Binding Path=NextPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppOkBtnStyle}" Content="OK" Visibility="Visible" IsEnabled="{Binding NextBtnEnabled}"/>
+        </Canvas>
+        <local:FooterControl Canvas.Bottom="0"></local:FooterControl>
+    </Canvas>
+</local:BasePage>

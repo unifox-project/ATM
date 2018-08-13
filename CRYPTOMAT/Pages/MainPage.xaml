@@ -1,0 +1,91 @@
+﻿<local:BasePage x:TypeArguments="local:MainPageViewModel" x:Class="CRYPTOMAT.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CRYPTOMAT"
+                mc:Ignorable="d" 
+                Style="{StaticResource PageStyle}"              
+                d:DesignHeight="1024" d:DesignWidth="1280" 
+     >
+    <Canvas>
+        <!--Шапка-->
+        <Grid>
+            <local:MainPageHeaderAreaControl DataContext="{Binding Header}"></local:MainPageHeaderAreaControl>
+        </Grid>
+        <!--<Canvas>
+            <Image Height="103" Canvas.Left="590" Source="/Resourse/CryptoApp/PageStart/Cryptomat-logo.png" 
+        Canvas.Top="66" Width="103"/>
+            <TextBlock FontWeight="Bold" FontSize="50" 
+                       FontFamily="Segoe UI"
+                       IsHyphenationEnabled="True" Canvas.Left="511" TextAlignment="Left" 
+                       TextWrapping="Wrap" 
+                       Foreground="#231f20" Text="Cryptomat"  Canvas.Top="190"/>
+        </Canvas>-->
+
+        <!--  логотип Unifox-->
+        <Canvas x:Name="Logo1" Height="165" Canvas.Left="563" Canvas.Top="66" Width="176">
+            <Image x:Name="Layer_8" Height="100" Canvas.Left="29" 
+                   Source="/Resources/Images/MainPage/UNIFOX_logo.png"
+                   Canvas.Top="0" Width="100"/>
+            <TextBlock x:Name="Cryptomat" 
+                       Foreground="#FF231F1F" 
+                       FontWeight="Bold" FontSize="50" 
+                       FontFamily="{StaticResource RobotoMedium}" 
+                       IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="-1" LineHeight="50" 
+                       TextAlignment="Center" TextWrapping="Wrap" 
+                       Canvas.Top="128"><Run Text="Uni" FontWeight="Regular"/><Run Text="Fox" />
+            </TextBlock>
+        </Canvas>
+
+
+        <!-- Кнопки -->
+        <Canvas  Height="725" Canvas.Left="394" Canvas.Top="258" Width="490">
+            <Button Canvas.Left="0" Style="{StaticResource CryptoAppBtnSchoicePart1Style}"
+                    Canvas.Top="10" Content="BUY" Command="{Binding Path=СhoicePartCommand, Mode=OneWay}" CommandParameter="1"/>
+            <Button Canvas.Left="0" Style="{StaticResource CryptoAppBtnSchoicePart2Style}"
+                    Canvas.Top="210" Content="SELL" Command="{Binding Path=СhoicePartCommand, Mode=OneWay}" CommandParameter="2"/>
+            <Button Canvas.Left="0" Style="{StaticResource CryptoAppBtnSchoicePart3Style}"
+                    Canvas.Top="415" Content="REDEEM" Command="{Binding Path=СhoicePartCommand, Mode=OneWay}" CommandParameter="3"/>
+        </Canvas>
+        <!-- Кнопки -->
+
+        <Canvas Visibility="Hidden" x:Name="Informácie" Height="103" Canvas.Left="509" Canvas.Top="880" Width="261">
+            <TextBlock  Foreground="#FFB5B5B5" FontSize="18" FontFamily="Roboto-Light" IsHyphenationEnabled="True" Canvas.Left="56" TextAlignment="Center" TextWrapping="Wrap" Text="The creditor is XXX" Canvas.Top="85"/>
+            <TextBlock  Foreground="#FFB5B5B5" FontSize="18" FontFamily="Roboto-Light" IsHyphenationEnabled="True" Canvas.Left="1" TextAlignment="Center" TextWrapping="Wrap" Text="Technical support: ARBITAS s.r.o." Canvas.Top="63"/>
+            <Image x:Name="Logo2" Height="53" Canvas.Left="103" Source="/Resources/Images/MainPage/firm_logo.png" Canvas.Top="0" Width="54"/>
+        </Canvas>
+
+        <Grid  Width="1280" Canvas.Bottom="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.ColumnSpan="3" Source="/Resources/Images/MainPage/face_bottom_empty.png" />
+            <Grid Grid.Column="0">
+                <TextBlock  Visibility="Hidden"
+                    Text="Production and sale Ufox.eu"
+                    FontFamily="{StaticResource RobotoLight}" 
+                    FontSize="12.7" Foreground="#505050" VerticalAlignment="Center" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <!--<TextBlock 
+                    Text="TEL.:  0800 000 000 (calls are included in the price of a local call)"
+                    FontFamily="{StaticResource RobotoLight}" 
+                    FontSize="20" VerticalAlignment="Center" TextAlignment="Center"/>-->
+                <TextBlock 
+                    Text="TEL.:  0800 000 000 "
+                    FontFamily="{StaticResource RobotoLight}" 
+                    FontSize="20" VerticalAlignment="Center" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBlock 
+                    Text="soft created by arbitas.com"
+                    FontFamily="{StaticResource RobotoLight}" 
+                    FontSize="12.7" 
+                    Foreground="#505050" VerticalAlignment="Center" TextAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </Canvas>
+</local:BasePage>

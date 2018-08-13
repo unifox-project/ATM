@@ -1,0 +1,82 @@
+﻿<local:BasePage x:TypeArguments="local:BuyDestinationAddressViewModel" x:Class="CRYPTOMAT.BuyDestinationAddressPage"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:CRYPTOMAT"
+                mc:Ignorable="d" 
+                Style="{StaticResource PageStyle}"   
+                d:DesignHeight="1024" d:DesignWidth="1280"
+                d:DataContext="{d:DesignInstance local:BuyDestinationAddressViewModel, IsDesignTimeCreatable=True}"
+>
+    <Canvas>
+        <!--Header block-->
+        <Grid>
+            <local:HeaderAreaControl DataContext="{Binding Header}" ></local:HeaderAreaControl>
+        </Grid>
+        <!--Menu block-->
+        <Grid Canvas.Left="50" Canvas.Top="130" >
+            <local:StepMenuControl DataContext="{Binding MenuViewModel}"></local:StepMenuControl>
+        </Grid>
+
+        <!---Label text block -->
+        <TextBlock Foreground="#FF2F75C1" FontWeight="Bold" FontSize="{StaticResource FontSizeRegular}" 
+                   FontFamily="{StaticResource RobotoBold}" IsHyphenationEnabled="True" Canvas.Left="655" TextAlignment="Center" TextWrapping="Wrap" Text="Scan the QR code of your wallet" Canvas.Top="147">
+            <TextBlock.RenderTransform>
+                <MatrixTransform Matrix="1.943,0,0,1.943,0,0"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <!-- Main Block -->
+        <Canvas  Height="485" Canvas.Left="450" Canvas.Top="200" Width="820">
+            <Canvas Width="400" Height="230">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="/Resources/Images/BG_side_photo.png"></ImageBrush>
+                </Canvas.Background>
+                <TextBlock  Foreground="Red" FontSize="8.614" FontFamily="{StaticResource RobotoMedium}" 
+                            FontWeight="Bold" 
+                            IsHyphenationEnabled="True" Canvas.Left="26.193" TextAlignment="Center" TextWrapping="Wrap"
+                            Text="{Binding ErrorMessage}" Canvas.Top="170.398" Width="150"
+                            >
+                    <TextBlock.RenderTransform>
+                        <MatrixTransform Matrix="2.09,0,0,2.09,0,0"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <!--Text="{Binding StringFormat=Destination address is the address&#xa;of your wallet where the purchased&#xa;{0} will be sent to.&#xa;Please make sure the address is&#xa;correct., Path=CurrencyName}"-->
+                <!--Text="Destination address is the address&#xa;of your wallet where the purchased&#xa;bitcoins will be sent to.&#xa;Please make sure the address is&#xa;correct."-->
+                <TextBlock x:Name="Destination_address" Foreground="#FF5E5E5E" FontWeight="Bold" 
+                           FontSize="8.614" FontFamily="{StaticResource RobotoMedium}"
+                           IsHyphenationEnabled="True" Canvas.Left="26" 
+                           TextAlignment="Left" TextWrapping="Wrap" 
+                    Canvas.Top="28" Width="159">
+                    <Run Text=" Destination address is the address&#xa;"></Run>
+                    <Run Text="of your wallet where the purchased&#xa;"></Run>
+                    <Run Text="{Binding Transaction.Buy.Currency.FullName, Source={x:Static local:TransactionViewModelLocator.Instance}, FallbackValue=Bitcoin}"></Run>
+                    <Run Text="will be sent to.&#xa;"></Run>
+                    <Run Text="Please make sure the address is&#xa; correct."></Run>
+                    <TextBlock.RenderTransform>
+                        <MatrixTransform Matrix="2.09,0,0,2.09,0,0"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Canvas>
+            <Canvas Width="400" Height="230" Canvas.Left="415">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="/Resources/Images/BG_side_data.png"></ImageBrush>
+                </Canvas.Background>
+                <Image Height="182"  Source="/Resources/Images/qrcode-cryptomat-pro.png" Canvas.Top="23" Width="180" Canvas.Left="117"/>
+            </Canvas>
+            <Image  Source="/Resources/Images/terminal_directions_v1.png" Width="820" Height="400" Canvas.Top="245" />
+        </Canvas>
+
+        <!--Footer buttons-->
+        <Canvas Canvas.Bottom="35" Width="1280" Height="110">
+            <Button Canvas.Left="29" Command="{Binding Path=PrevPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppBackBtnStyle1}" Content="BACK"/>
+            <Button Canvas.Left="500" Command="{Binding Path=MainPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppMainBtnStyle1}" Content="MAIN PAGE"/>
+            <Button Canvas.Left="972" Command="{Binding Path=NextPageCommand, Mode=OneWay}" 
+                    IsEnabled="{Binding NextBtnEnabled}"
+                    Style="{StaticResource CryptoAppNextBtnStyle1}"
+                    Content="NEXT (test) "/>
+        </Canvas>
+        <local:FooterControl Canvas.Bottom="0"></local:FooterControl>
+    </Canvas>
+</local:BasePage>

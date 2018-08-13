@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!--**************************** define constants parameters ***************************************-->
+
+  <?if $(var.Platform)=x64?>
+  <!--each time change version need change this uid for 64 bit application-->
+  <?define ProductCode = "{C1D95BCA-85D4-445F-896A-B7672265302B}" ?>
+  <?else?>
+  <!--each time change version need change this uid for 32 bit application-->
+  <?define ProductCode = "{62D71C52-481B-4014-B1AA-17CCED3FCCFB}" ?>
+  <?endif?>
+
+  <!--define build version if needed-->
+  <!--
+    <?define BuildVersion = 1.2.3.4?>
+    -->
+ 
+
+  <!--Don't  change this code after first build, prorgam will  use it for update-->
+  <?define UpdateCode = "{00FC362D-E7AE-406B-86F6-650566A2756B}" ?>
+
+  <!--**************************************************************************************************-->
+  
+   <!--Define main product -->
+    <Product Id="$(var.ProductCode)"
+             Name="!(loc.ProductName_$(var.Platform))"
+             Language="!(loc.Language)"
+             Version="$(var.BuildVersion)"
+             Manufacturer="!(loc.Company)"
+         
+             UpgradeCode="$(var.UpdateCode)">
+
+      <!--Provide package details-->
+      <Package InstallerVersion="200"
+               ReadOnly="yes"
+
+               Compressed="yes"
+               InstallScope="perMachine"
+               Platform="$(var.Platform)"
+               Manufacturer="!(loc.Company)"
+               Description="!(loc.Description)"
+               Keywords="!(loc.Keywords)"
+               Comments="!(loc.Comments)"
+               Languages="!(loc.Language)"
+      />
+      
+
+      <!--Downgrade Error message-->
+      <MajorUpgrade AllowDowngrades="no"
+      AllowSameVersionUpgrades="yes"        DowngradeErrorMessage="!(loc.DowngradeErrormessage)" />
+
+      <!-- compress all in one file msi -->
+      <MediaTemplate EmbedCab="yes"	 />
+
+      <!--Define main app icon-->
+      <Icon Id="icon.ico" SourceFile="$(var.CRYPTOMAT.ProjectDir)\icon_app.ico"/>
+
+      <!-- USE ICON FOR THIS INSTALLER-->
+      <Property Id="ARPPRODUCTICON">icon.ico</Property>
+      <!--Help support website-->
+      <Property Id="ARPURLINFOABOUT">"https://www.arbitas.com/"</Property>
+
+      <!--Create a basic UI for the app-->
+      <UIRef Id="WixUI_Minimal"/>
+      <!--Change UI background images-->
+      <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\License.rtf"/> 
+      <WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\Assets\Background.bmp"/>
+      <WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\Assets\Banner.bmp"/> 
+
+      
+
+      <!--Define components, shorcuts, files ... for initializer-->
+      <Feature Id="ProductFeature" Title="!(loc.ProductApplictionName)" Level="1">
+        <ComponentGroupRef Id="ProductComponents" />
+        <ComponentGroupRef Id="PublishedComponents" />
+      </Feature>
+    </Product>
+  
+
+</Wix>

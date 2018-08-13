@@ -1,0 +1,95 @@
+﻿<local:BasePage x:TypeArguments="local:RedeemTicketViewModel" x:Class="CRYPTOMAT.RedeemTicketPage"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:CRYPTOMAT"
+                mc:Ignorable="d" 
+                Style="{StaticResource PageStyle}"   
+                d:DesignHeight="1024" d:DesignWidth="1280"
+                d:DataContext="{d:DesignInstance local:RedeemTicketViewModel, IsDesignTimeCreatable=True}"
+>
+
+    <Canvas>
+        <!--Шапка-->
+        <Grid>
+            <local:HeaderAreaControl DataContext="{Binding Header}" ></local:HeaderAreaControl>
+        </Grid>
+
+        <Grid Canvas.Left="50" Canvas.Top="130" >
+            <local:StepMenuControl DataContext="{Binding MenuViewModel}"></local:StepMenuControl>
+        </Grid>
+
+
+        <TextBlock Foreground="#FF2F75C1" FontWeight="Bold" FontSize="{StaticResource FontSizeRegular}"
+                   FontFamily="{StaticResource RobotoBold}" IsHyphenationEnabled="True" Canvas.Left="580" TextAlignment="Center" 
+                   TextWrapping="Wrap" Text="Please scan the QR code of your redeem ticket" Canvas.Top="147">
+            <TextBlock.RenderTransform>
+                <MatrixTransform Matrix="1.943,0,0,1.943,0,0"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <Canvas  Height="485" Canvas.Left="450" Canvas.Top="200" Width="820">
+            <Canvas Width="400" Height="230">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="/Resources/Images/BG_side_photo.png"></ImageBrush>
+                </Canvas.Background>
+
+                <TextBlock 
+                           Foreground="#FF5E5E5E"
+                           FontWeight="Bold" FontSize="8.614" 
+                           FontFamily="{StaticResource RobotoMedium}"
+                           IsHyphenationEnabled="True" Canvas.Left="26.193" TextAlignment="Left" TextWrapping="Wrap" Text="Please scan the QR code of the redeem&#xa;ticket to get your cash." Canvas.Top="28.398">
+                    <TextBlock.RenderTransform>
+                        <MatrixTransform Matrix="2.09,0,0,2.09,0,0"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock  Foreground="Red" FontSize="8.614" FontFamily="{StaticResource RobotoMedium}" 
+                            FontWeight="Bold" 
+                            IsHyphenationEnabled="True" Canvas.Left="26.193" TextAlignment="Center" TextWrapping="Wrap"
+                            Text="{Binding ErrorMessage}" Canvas.Top="130" Width="150"
+                >
+                    <TextBlock.RenderTransform>
+                        <MatrixTransform Matrix="2.09,0,0,2.09,0,0"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+            </Canvas>
+            <Canvas Width="400" Height="230" Canvas.Left="415">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="/Resources/Images/BG_side_data.png"></ImageBrush>
+                </Canvas.Background>
+                <Image Height="182"  Source="/Resources/Images/qrcode-cryptomat-pro.png" Canvas.Top="23" Width="180" Canvas.Left="117"/>
+            </Canvas>
+            <Image  Source="/Resources/Images/terminal_directions_bill_v1.png" Width="820" Height="400" Canvas.Top="245" />
+        </Canvas>
+
+
+        <!---->
+        <Canvas Canvas.Bottom="35" Width="1280" Height="110">
+            <Button Canvas.Left="29" Command="{Binding Path=PrevPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppBackBtnStyle1}" Content="BACK" Visibility="Hidden"/>
+            <Button Canvas.Left="500" Command="{Binding Path=MainPageCommand, Mode=OneWay}" Style="{StaticResource CryptoAppMainBtnStyle1}" Content="MAIN PAGE"/>
+            <Button Canvas.Left="972" Command="{Binding Path=NextPageCommand, Mode=OneWay}" 
+                    Style="{StaticResource CryptoAppNextBtnStyle1}" Content="NEXT (test)" />
+        </Canvas>
+
+        <Grid  Width="1280" Canvas.Bottom="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.ColumnSpan="3" Source="/Resources/Images/MainPage/face_bottom_empty.png" />
+            <Grid Grid.Column="2">
+                <TextBlock 
+                    Text="soft created by arbitas.com"
+                    FontFamily="{StaticResource RobotoLight}" 
+                    FontSize="12.7" 
+                    Foreground="#505050" VerticalAlignment="Center" TextAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+    </Canvas>
+
+</local:BasePage>

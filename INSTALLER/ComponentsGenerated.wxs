@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Component Id="cmp5A4491C4B0E4358D2624432FEDC46A16" Guid="{77446D3E-22A8-4CDD-8A5E-71786713EAC6}">
+                <File Id="filBCC6BD87C26C650938BDD0E95D3ADFB8" KeyPath="yes" Source="$(var.BasePath)\CRYPTOMAT.exe" />
+            </Component>
+            <Component Id="cmp8F5637E44D8A993E65892B021CB210CA" Guid="{52D7815C-CFE1-42D7-BF56-DB2B48363E82}">
+                <File Id="filF7460F8D388E507BB819AC695BD4C778" KeyPath="yes" Source="$(var.BasePath)\CRYPTOMAT.exe.config" />
+            </Component>
+            
+            <Component Id="cmpDA60982F820038280380BE207B6E738E" Guid="{2CD74A4D-DA80-40A5-9385-1DD0E348050A}">
+                <File Id="filFB25B5D44CA54D4D876DD0B5BC0DA0E0" KeyPath="yes" Source="$(var.BasePath)\Ninject.dll" />
+            </Component>
+            <Component Id="cmpB8D71C46885F3F849C4526BB4F6C303F" Guid="{A3DAD3BF-F745-4EFA-8DCA-5A76B89C01F8}">
+                <File Id="filE3269A14F34C799370A12BE5D82002D0" KeyPath="yes" Source="$(var.BasePath)\Ninject.xml" />
+            </Component>
+            <Component Id="cmpB7F1EBE42DCB1051B92D42C1EF84E2F9" Guid="{FCFBA3A5-B50B-4966-8468-52BE0A48FCCB}">
+                <File Id="filA09ADF42C6343B9B7C7780D266455CC4" KeyPath="yes" Source="$(var.BasePath)\NLog.dll" />
+            </Component>
+            <Component Id="cmpAF162B14FA6391E4D0D34D9485A3CBEB" Guid="{01CB99E4-32A8-4400-BFFA-E8FAC208A141}">
+                <File Id="fil938BF1D1B479C73F0CECCBD51683AA0E" KeyPath="yes" Source="$(var.BasePath)\NLog.xml" />
+            </Component>
+            <Component Id="cmp55D15D832C8EA4D38A9ED5865C55350D" Guid="{3EE16804-14FB-444F-8C8D-440B26D7C580}">
+                <File Id="filDC2AD106ACE9F77DFAD85F17708E9111" KeyPath="yes" Source="$(var.BasePath)\PropertyChanged.dll" />
+            </Component>
+            <Component Id="cmp7C73E232D5572614EE1E6F85442142BD" Guid="{7CFF8F9B-30B7-4B4B-B94A-A2213952EDA2}">
+                <File Id="fil1D09A1096396E8461F41C0D280DA00A9" KeyPath="yes" Source="$(var.BasePath)\PropertyChanged.xml" />
+            </Component>
+            <Directory Id="dir41772C233BE465DE0D167364B3BB566C" Name="Resources">
+                <Directory Id="dirCD8B8EE3216583DE0D5C48D027CA5FF6" Name="Sound">
+                    <Component Id="cmpB38AA6938A41982966D787730B3F94F1" Guid="{FD0C6ABB-313E-4245-A3B9-B15BCDBA4162}">
+                        <File Id="fil2361A7285F5C73CCE3F544840424B717" KeyPath="yes" Source="$(var.BasePath)\Resources\Sound\buttonclick.wav" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="PublishedComponents">
+            <ComponentRef Id="cmp5A4491C4B0E4358D2624432FEDC46A16" />
+            <ComponentRef Id="cmp8F5637E44D8A993E65892B021CB210CA" />
+            
+            <ComponentRef Id="cmpDA60982F820038280380BE207B6E738E" />
+            <ComponentRef Id="cmpB8D71C46885F3F849C4526BB4F6C303F" />
+            <ComponentRef Id="cmpB7F1EBE42DCB1051B92D42C1EF84E2F9" />
+            <ComponentRef Id="cmpAF162B14FA6391E4D0D34D9485A3CBEB" />
+            <ComponentRef Id="cmp55D15D832C8EA4D38A9ED5865C55350D" />
+            <ComponentRef Id="cmp7C73E232D5572614EE1E6F85442142BD" />
+            <ComponentRef Id="cmpB38AA6938A41982966D787730B3F94F1" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>
